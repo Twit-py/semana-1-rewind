@@ -1,1 +1,88 @@
-hola mundo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Mascotas</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+    <style>
+        .titulo{
+            color: darkcyan;
+            text-align: center;
+        }
+        .cita{
+            font-style: italic;
+        }
+        h2{
+            color: rgb(255, 14, 28);
+        }
+        table, th, td{
+            border: 1px solid black;
+        }
+    </style>
+    <header>
+        <h1 class="titulo">Tienda de Mascotas</h1>
+
+    </header>
+
+    <p>El porqué de las mascotas</p>
+    <blockquote class="cita" cite="https://es.wikipedia.org/wiki/Zapatilla">La palabra mascota puede referirse al noob cómodo o de abrigo para estar en casa </blockquote>
+
+    <main>
+        <p>Lorem <a href="https://www.eltiempo.com/" target="_blank">ipsum</a> dolor sit amet consectetur, adipisicing elit. Facilis dolor exercitationem inventore dolore debitis. Officia pariatur, aliquid minima magnam error, molestias, ipsum explicabo maxime fugit officiis esse corrupti reiciendis ut!</p>
+        
+        
+        <h2> Sección de Mascotas</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut, numquam ullam, commodi suscipit mollitia delectus officia sint, nemo quisquam fugiat eum molestias nobis harum voluptate accusantium at voluptates cumque reiciendis.</p>
+
+        <ul>
+            <li>Video</li>
+            <li> <a href="#Contacto"> Contacto </a></li>
+            <li> <a href="#Fundador"> Fundador </a> </li>
+            <li> <a href="#Formulario"> Formulario </a></li>
+        </ul>
+
+        <br>
+
+        <iframe width="360" height="350" src="https://www.youtube.com/embed/wawvnX-CCe8" frameborder="0"></iframe>
+
+        <h2 id="Contacto"> Contacto </h2>
+
+        <table>
+            <tr>
+                <th>Áreas de la tienda</th>
+                <th>Responsable</th>
+                <th>Teléfono</th>
+            </tr>
+            <tr>
+                <td>Cosmeticos</td>
+                <td> <a href="#Fundador"> Andres Romero </a></td>
+                <td>3016463655</td>
+            </tr>
+            <tr>
+                <td>Snacks</td>
+                <td>Daniela Romero</td>
+                <td>3102847434</td>
+            </tr>
+        </table>
+
+        <h2 id="Fundador">Fundador</h2>
+        <img src="images/Alaska.png" alt="MiFoto" height="360" width="350">
+        
+        <h3 id = "Formulario"> Formulario</h3>
+        <form>
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombreC" placeholder="Ingrese nombre y apellido">
+        </form>
+
+    </main>
+
+    <footer>
+        <h2>Pie de Página</h2>
+    </footer>
+</body>
+</html>
