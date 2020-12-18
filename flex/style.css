@@ -1,0 +1,23 @@
+.elemento{
+    background-color: orange;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+    border: 1px black solid;
+    line-height: 100px;
+}
+.contenedor{
+    height: 500px;
+    border: 4px blue solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+.elemento:nth-child(2n){
+    height: 150px;
+    background-color: yellow;
+}
