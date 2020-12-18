@@ -1,11 +1,11 @@
 .elemento{
     background-color: orange;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     text-align: center;
     padding: 5px;
     border: 1px black solid;
-    line-height: 100px;
+    line-height: 50px;
 }
 .contenedor{
     height: 500px;
@@ -18,6 +18,31 @@
 }
 
 .elemento:nth-child(2n){
-    height: 150px;
+    height: 100px;
     background-color: yellow;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .elemento:nth-child(2n){
+        height: 200px;
+        background-color: cyan;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992) {
+    .elemento:nth-child(2n){
+        height: 150px;
+        background-color: purple;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200) {
+    .elemento:nth-child(2n){
+        height: 300px;
+        background-color: red;
+    }
+
 }
