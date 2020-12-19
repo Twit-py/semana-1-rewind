@@ -15,6 +15,12 @@ const traerTexto = () =>{
 const llamadaApi = async (texto) =>{
     const resultadoApi = await fetch('http://www.omdbapi.com/?apikey=6c43a029&t=' + texto);
     const resultadoJson = await resultadoApi.json();
+    
+    contenedorPrincipal = document.getElementById('contenedorBig');
+
+    if(contenedorPrincipal.style.display === ""){
+        contenedorPrincipal.style.display="block";
+    }
 
     if(resultadoJson['Response']==="True"){
 
@@ -27,15 +33,12 @@ const llamadaApi = async (texto) =>{
         document.getElementById('anho').innerHTML=anho;
         document.getElementById('sinopsis').innerHTML=sinopsis;
         document.getElementById('titulo').innerHTML=titulo;
-        
-        contenedorPrincipal = document.getElementById('contenedorBig');
-        
-        if(contenedorPrincipal.style.display === ""){
-            contenedorPrincipal.style.display="block";
-        }
     }
     else{
-        alert('No se encontró ninguna película')
+        document.getElementById('imagenRespuesta').src="./error.jpg";
+        document.getElementById('anho').innerHTML="404";
+        document.getElementById('sinopsis').innerHTML="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni modi dolor dolorum quibusdam similique beatae aut, distinctio voluptatem natus reprehenderit nisi officiis quia asperiores totam explicabo molestiae deserunt vel cum.";
+        document.getElementById('titulo').innerHTML="No se encontró información";
     }
 }
 
