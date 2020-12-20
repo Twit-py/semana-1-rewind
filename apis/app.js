@@ -5,6 +5,7 @@
 const traerTexto = () =>{
     const botonBuscar = document.getElementById('botonBuscar');
     botonBuscar.addEventListener('click', (evento) => {
+        
         //Funcion del evento
         const textoBuscar = document.getElementById('textoBuscar');
         valorTextoBuscar = textoBuscar.value;

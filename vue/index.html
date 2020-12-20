@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer VUE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <h1>Mi página web interactiva con Vue</h1>
+
+    <div id="app" class="ambienteVue">
+
+        <h2>Título Secundario</h2>
+        <h2>{{saludo}} {{message}} {{contador}}</h2>
+        <p>{{list}}</p>
+
+        <button type="button" class="btn btn-success" v-on:click="contador++">+</button>
+        <button type="button" class="btn btn-danger" @click="verificarSalida">-</button>
+
+        <br><br>
+
+        <div class="input-group mb-3">
+            <input 
+                id="inputSaludo" 
+                type="text" 
+                class="form-control" 
+                placeholder="Saludo" 
+                aria-label="Recipient's username" 
+                aria-describedby="button-addon2"
+                v-model="saludo">
+
+            <button 
+                id="buttonSaludo" 
+                class="btn btn-outline-secondary" 
+                type="button">Button</button>
+        </div>
+
+        <ruta></ruta>
+        
+    </div>
+
+
+
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
