@@ -1,48 +1,53 @@
-/* Declaración de la función que al darle clic a buscar recupera el texto
-*  params: none
-*  return: string
-*/
-const traerTexto = () =>{
-    const botonBuscar = document.getElementById('botonBuscar');
-    botonBuscar.addEventListener('click', (evento) => {
-        
-        //Funcion del evento
-        const textoBuscar = document.getElementById('textoBuscar');
-        valorTextoBuscar = textoBuscar.value;
-        llamadaApi(valorTextoBuscar);
-    });
+const app = new Vue({
+    el:"#app",
+    data:{
+        texto: '',
+        lista:[]
+        //almacenamiento
+    },
+    methods:{
+        async agregarElemento(){
+            let resultadoApi =  await fetch('http://www.omdbapi.com/?apikey=6c43a029&t=' + this.texto);
+            let resultadoJSON = await resultadoApi.json();
+
+            // Agregar el resultado de la búsqueda a la lista de reproduccción
+            // Solo se agrega si se encuentra resultado real
+            if(resultadoJSON['Response']==="True"){
+                // Hacer el push
+                this.lista.push({
+                    titulo: resultadoJSON['Title'],
+                    anho: resultadoJSON['Year'],
+                    liked: false
+                })
+            }
+            else{
+                alert('No se encontró resultado')
+            }
+            this.texto = '';
+
+            localStorage.setItem('almacenamiento', JSON.stringify(this.lista));
+        },
+        marcarLike(posicion){
+            if (this.lista[posicion].liked){
+                this.lista[posicion].liked = false;
+            }else{
+                this.lista[posicion].liked = true;
+            }
+
+            localStorage.setItem('almacenamiento', JSON.stringify(this.lista));
+        },
+        eliminarElemento(posicion){
+            this.lista.splice(posicion,1)   
+            localStorage.setItem('almacenamiento', JSON.stringify(this.lista));
+        }
+    },
+    created(){
+        let datosAlmacenados = JSON.parse(localStorage.getItem('almacenamiento'));
+        if(datosAlmacenados==null){
+            this.lista = []
+        }else{
+            this.lista = datosAlmacenados
+        }
+    }
 }
-
-const llamadaApi = async (texto) =>{
-    const resultadoApi = await fetch('http://www.omdbapi.com/?apikey=6c43a029&t=' + texto);
-    const resultadoJson = await resultadoApi.json();
-    
-    contenedorPrincipal = document.getElementById('contenedorBig');
-
-    if(contenedorPrincipal.style.display === ""){
-        contenedorPrincipal.style.display="block";
-    }
-
-    if(resultadoJson['Response']==="True"){
-
-        const titulo = resultadoJson['Title'];
-        const anho = resultadoJson['Year'];
-        const sinopsis = resultadoJson['Plot'];
-        const poster = resultadoJson['Poster'];
-
-        document.getElementById('imagenRespuesta').src=poster;
-        document.getElementById('anho').innerHTML=anho;
-        document.getElementById('sinopsis').innerHTML=sinopsis;
-        document.getElementById('titulo').innerHTML=titulo;
-    }
-    else{
-        document.getElementById('imagenRespuesta').src="./error.jpg";
-        document.getElementById('anho').innerHTML="404";
-        document.getElementById('sinopsis').innerHTML="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni modi dolor dolorum quibusdam similique beatae aut, distinctio voluptatem natus reprehenderit nisi officiis quia asperiores totam explicabo molestiae deserunt vel cum.";
-        document.getElementById('titulo').innerHTML="No se encontró información";
-    }
-}
-
-// http://www.omdbapi.com/?apikey=6c43a029&t={tituloBusqueda}
-
-traerTexto();
+)
